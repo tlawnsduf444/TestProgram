@@ -16,7 +16,7 @@ class Capture:
 
     def __init__(self):
         pygame.init()
-        pygame.display.set_caption('Capture')
+        pygame.display.set_caption('screen_test')
         self.screen = pygame.display.set_mode(self.pad_size, pygame.FULLSCREEN)
         self.clock = pygame.time.Clock()
         self.resolution = self.screen.get_size()
@@ -60,12 +60,12 @@ class Capture:
             pygame.draw.circle(self.screen, self.RED, self.pos[i], 25)
 
     def write(self):
-        with open(os.getcwd() + "/capture/" + str(datetime.datetime.now()), 'w') as cap:
+        with open(os.getcwd() + "/screen_file/" + str(datetime.datetime.now()), 'w') as cap:
             cap.writelines(self.data)
 
 if __name__ == "__main__":
     start = Capture()
     start.runCapture()
-    if not os.path.exists(os.getcwd() + "/capture"):
-        os.makedirs(os.getcwd() + "/capture")
+    if not os.path.exists(os.getcwd() + "/screen_file"):
+        os.makedirs(os.getcwd() + "/screen_file")
     start.write()
